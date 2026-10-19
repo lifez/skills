@@ -8,22 +8,28 @@ disable-model-invocation: true
 
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
+All bundled relative references resolve from this skill's directory, not the working directory.
+
+Use available `Agent` with `general-purpose` for explorers and the explainer. `Explore`, if available, is only for locating files, not these substantive roles. Inherit the parent's model by default; an override is optional only when explicitly requested and available. If `Agent` is absent, perform the same roles inline. Do not use `SubagentWorkflow` without explicit user opt-in.
+
+All delegates are read-only: no project edits, commits, deployments, messages, or external mutations. Do not run code or tests with side effects. Local scratch notes are allowed only if explicitly assigned. Use read/search tools and report access gaps honestly.
+
 ## 1. Assess complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
 
-- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. Spawn one explainer that explores and explains in one pass, built from `references/explainer-prompt.md` without the explorer-findings section. Go to step 4.
+- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. Spawn one explainer that explores and explains in one pass, built from [the explainer template](references/explainer-prompt.md) without the explorer-findings section. Go to step 4.
 - **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): go to step 2.
 
 When in doubt, take the simple path.
 
 ## 2. Explore (complex only)
 
-Decompose the question into 2 to 4 angles, each a distinct slice of the subsystem. Spawn all explorers in a single message, each with `references/explorer-prompt.md` and its angle filled in.
+Decompose the question into 2 to 4 angles, each a distinct slice of the subsystem. Spawn all explorers in a single message, each with [the explorer template](references/explorer-prompt.md) and its angle filled in.
 
 ## 3. Synthesize (complex only)
 
-Once all explorers have returned, spawn one explainer with `references/explainer-prompt.md` and every explorer's findings filled in.
+Once all explorers have returned, spawn one explainer with [the explainer template](references/explainer-prompt.md) and every explorer's findings filled in.
 
 ## 4. Present
 
@@ -31,4 +37,7 @@ Present the explainer's output. Light edits for clarity or context from the conv
 
 ## Output format
 
-The explanation uses the sections defined in `references/explainer-prompt.md`, dropping any that do not apply: Overview, Key Concepts, How It Works, Where Things Live, Gotchas.
+The explanation uses the sections defined in [the explainer template](references/explainer-prompt.md), dropping any that do not apply: Overview, Key Concepts, How It Works, Where Things Live, Gotchas.
+
+---
+Adapted from [pstack/how](https://github.com/cursor/plugins/blob/d457567332aa6989e753ea289f30ea2bfbc80bc0/pstack/skills/how/SKILL.md), pinned to `d457567332aa6989e753ea289f30ea2bfbc80bc0`; local safety and portability adaptations. See [upstream MIT license](https://github.com/cursor/plugins/blob/d457567332aa6989e753ea289f30ea2bfbc80bc0/pstack/LICENSE).

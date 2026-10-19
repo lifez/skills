@@ -14,7 +14,7 @@ Datadog holds the runtime record, what actually happened in production, as oppos
 
 ## How to search it
 
-Use the Datadog MCP. Start broad, then narrow.
+Use actual available Datadog MCP read tools only after discovering the tool map (codemode `searchTools` if needed) and inspecting schemas. Names below are illustrative, not guaranteed operations; adapt to available equivalents and report missing capabilities or access. Do not create or modify monitors, dashboards, incidents, or notebooks. Keep observability and error-tracking investigators within their own evidence category even when they share this server. Start with bounded metadata searches, then narrow.
 
 1. **Identify the owning service(s).**
 

@@ -1,0 +1,16 @@
+# Hillclimb
+
+Use for sustained improvement of one measurable outcome, not an unbounded optimization run. Read linked skills before using them.
+
+1. Ground the target with [how](../../how/SKILL.md). Select a realistic workload reproducing the complaint; name data size, history, state, and concurrency. If reproduction fails, fix the workload instead of optimizing guesses.
+2. Fix the metric, direction, correctness gate, target, and finite budget before changes: maximum attempts, elapsed time, and consecutive rejects. Use the user's limits or agree them; otherwise propose a small cap (for example five attempts) before starting. Stop at the first budget limit, success, or unsafe/unmeasurable condition. Do not expand the run silently.
+3. Build and validate a repeatable measurement command, then freeze it. Read [benchmark-checklist](../../benchmark-checklist/SKILL.md); control inputs and environment, repeat enough to estimate noise, and record work/error counts. Verify contrasting workloads separate as expected. Record the baseline distribution and green regression gate. If the harness must change, establish a new baseline before comparing results.
+4. Create a decision log in an agreed scratch location outside the repository, without changing ignore/config files. Use TSV or Markdown with: attempt ID, hypothesis/mechanism, changed paths, before, after, delta, noise, regression result, keep/remove verdict, and reason. Read it before each attempt.
+5. Try one hypothesis at a time, ordered cheaply: stop unused work; avoid repeating it; do less; defer it; move it off the critical path; parallelize; make it cheaper. Implement inline or optionally use an available, permitted Agent with a bounded scope and inherited session model. Do not stack unmeasured edits.
+6. Run the frozen harness and correctness gate after each change. Keep a change only if improvement exceeds noise and correctness holds. Remove only your own rejected attempt, preserving prior accepted changes and all pre-existing user work; never broadly reset or revert the tree. Review the actual diff and record the decision either way. A simpler change holding the metric can be accepted only if the stated objective permits it.
+7. On a plateau, reconsider the mechanism or category within the remaining budget. Do not chase a number by changing the workload, weakening correctness, or ignoring external consumers. Preserve compatibility or stage explicit migrations. Report stalled or inconclusive results honestly.
+8. Stop and summarize at the agreed boundary. No autonomous wake loops or mandatory commits. Do not commit, push, rebase, or publish without user authorization. If review preparation is wanted, read [opening-a-pr](../../opening-a-pr/SKILL.md) and draft only unless authorized.
+
+Report metric/target, baseline → final with units and percent delta, kept versus rejected attempts, accepted changes, regression evidence, log path, stop reason, and next hypothesis. Read [principle-prove-it-works](../../principle-prove-it-works/SKILL.md) before making verification claims.
+
+Adapted from [pstack Hillclimb](https://github.com/cursor/plugins/blob/d457567332aa6989e753ea289f30ea2bfbc80bc0/pstack/skills/poteto-mode/playbooks/hillclimb.md) (MIT; see [upstream MIT license](https://github.com/cursor/plugins/blob/d457567332aa6989e753ea289f30ea2bfbc80bc0/pstack/LICENSE)).

@@ -26,7 +26,7 @@ You are answering a "why" question about a piece of code by synthesizing finding
 
 ## Epistemics Framework
 
-You MUST follow `references/epistemics.md`. Read it in full before writing. The key rules:
+You MUST follow [the epistemics framework](epistemics.md), adjacent to this template in the why skill directory. Read it in full before writing. The key rules:
 
 1. Every claim must sit in one tier: **Direct**, **Supported**, **Inferred**, **Speculative**, **Unknown**. The tier sets its section and its phrasing.
 2. Every Direct/Supported claim must have a citation (PR #, ticket ID, doc URL, chat permalink, commit hash, or file:line).
@@ -62,7 +62,7 @@ File paths, line ranges, key symbols. Two or three lines to orient a cold reader
 
 Claims with textual evidence, each quoted or paraphrased and cited precisely:
 
-- **[Direct]** {Claim}. Source: [PR #123](url) / ticket ID / file:line. {Brief quote or paraphrase.}
+- **[Direct]** {Claim}. Source: PR #123 (include its verified URL) / ticket ID / file:line. {Brief quote or paraphrase.}
 - **[Supported]** {Claim}. Evidence: {list of items and what each contributes}.
 
 `[Direct]` is single-source, explicit evidence. `[Supported]` is multiple indirect items converging on a conclusion.
@@ -98,9 +98,9 @@ Specific gaps: "We searched the issue tracker for [query1], [query2], [query3] a
 
 What was actually searched, so the user can judge coverage and redirect:
 
-- **Source control history**: {file paths}, {number of commits reviewed}, PRs #{numbers}, and code comments searched. Or "Not searched. This should not happen because git and `gh-axi` are always expected."
+- **Source control history**: {file paths}, {number of commits reviewed}, PRs #{numbers}, and code comments searched. Or name the actual limitation: no repository/history, missing CLI, unauthenticated or denied remote access. Always assess accessible local source/comments/tests; distinguish local evidence from PR records not read.
 - **Issue / ticket tracker**: {ticket IDs and keyword searches}. Or "Not searched. No matching MCP available in this environment."
-- **Long-form documents**: {page titles and search queries}. Or "Not searched. No matching MCP available in this environment."
+- **Long-form documents**: {local paths/page titles and search queries}. Always assess local documentation without requiring MCP. If absent or inaccessible, name the missing locations or access failure; distinguish an empty local search from unavailable remote docs.
 - **Real-time team chat**: {channels searched, date ranges, queries}. Or "Not searched. No matching MCP available in this environment."
 - **Infrastructure observability**: {dashboards, monitors, metrics, logs, traces, or incidents searched}. Or "Not searched. No matching MCP available in this environment."
 - **Error / exception tracking**: {issues, events, or releases searched}. Or "Not searched. No matching MCP available in this environment."

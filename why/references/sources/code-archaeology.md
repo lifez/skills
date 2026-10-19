@@ -11,7 +11,7 @@
 - CHANGELOG entries and release notes in the repo
 - Issue/ticket IDs in commit messages and PR bodies
 
-The most trustworthy source, tied directly to the code, and the most complete. Everything that went through the repo should be here.
+Often the closest record to implementation, but not necessarily complete: shallow clones, rewritten history, private PRs, and off-repo discussions leave gaps. Separate available local evidence from unavailable remote rationale.
 
 ## How to search it
 
@@ -37,7 +37,7 @@ git show <hash>
 git log <old>..<new> -p -- <file>
 ```
 
-Pull the PR record with `gh-axi` (not `gh`). It returns compact, truncated output by default. Add `--full` when the rationale may be deep in a body or diff:
+Pull the PR record with `gh-axi` (not `gh`) only if installed, authenticated, and authorized for this repository. If unavailable or denied, record the limitation and continue with accessible local history/source/comments/tests; do not claim PRs were searched or assume local history is complete. Remote issue content belongs to the issue investigator: hand off those leads rather than duplicating its search. It returns compact, truncated output by default. Add `--full` when the rationale may be deep in a body or diff:
 
 ```bash
 # Find the PR that merged a commit (squash/rebase merges hide the PR number)

@@ -6,6 +6,10 @@ Build each explorer subagent's prompt from this template. Fill in the placeholde
 
 Other explorers are investigating different slices of the same subsystem in parallel. Don't try to cover everything. Focus on your assigned angle and go deep.
 
+## Read-only boundaries
+
+Use only available read/search operations. Do not edit project files, run mutating commands, execute application code or tests with side effects, commit, deploy, send messages, or mutate external services. Local scratch notes are allowed only if explicitly assigned. Do not reveal secrets or unnecessary personal data. Report unavailable files or tools as gaps rather than inventing evidence.
+
 ## Question
 
 > {QUESTION}

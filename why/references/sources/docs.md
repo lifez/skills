@@ -17,7 +17,7 @@ The `docs/` directory at the repository root. Depending on the repo, it may hold
 
 ## How to search it
 
-Use local search (`rg`, `git`) from the repository root. If `docs/` does not exist, stop and report the gap.
+Use local read/search tools (`rg`, `git` when available) from the repository root; no MCP is required. Always assess `docs/`, README files, ADRs, and other local documentation locations. If `docs/` is absent, record that limitation and search the other locations before reporting no local docs. Record unavailable history or permissions separately from empty searches. Adapt the `docs/` paths below to the locations actually found. Read linked docs only within this category and available read access; send cross-category references as Additional Leads.
 
 1. **Map the tree first.**
 

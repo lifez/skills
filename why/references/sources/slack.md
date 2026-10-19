@@ -2,7 +2,7 @@
 
 ## How to search it
 
-Slack MCP tools vary. Check which Slack MCP is available and inspect its tool schema first. It may require `mcp_auth`. If authentication fails, stop and report the gap.
+Slack MCP tools vary. Check which Slack MCP is available and inspect its tool schema first. Do not assume any named authentication tool exists or initiate authentication/configuration changes. If authentication or read access is unavailable, stop and report the gap. Search/read only; do not post, react, or modify conversations.
 
 1. **Author-bounded search.** Messages from the PR author around the PR merge date. Limits scope dramatically and often hits gold.
 3. **PR URL search.** Slack often links PRs when they're reviewed or discussed. Search for the PR URL (or just `/pull/<number>`).
