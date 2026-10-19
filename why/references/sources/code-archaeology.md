@@ -3,7 +3,7 @@
 ## What this source contains
 
 - Commit history (messages, dates, authors, diffs)
-- PR descriptions, review comments, and discussion threads (via `gh`)
+- PR descriptions, review comments, and discussion threads (via `gh-axi`)
 - Inline code comments, TODOs, FIXMEs, deprecation notes
 - ADRs (architectural decision records) if the repo keeps them
 - Tests, whose names and assertions often encode the edge cases that motivated a change
@@ -35,6 +35,29 @@ git show <hash>
 
 # Commits between two points affecting this file
 git log <old>..<new> -p -- <file>
+```
+
+Pull the PR record with `gh-axi` (not `gh`). It returns compact, truncated output by default. Add `--full` when the rationale may be deep in a body or diff:
+
+```bash
+# Find the PR that merged a commit (squash/rebase merges hide the PR number)
+gh-axi api /repos/{owner}/{repo}/commits/<hash>/pulls --jq '.[] | {number, title}'
+
+# PR body, discussion, and review threads (inline review comments hold most rationale)
+gh-axi pr view <number> --full --comments --reviews
+
+# The PR's diff as reviewed
+gh-axi pr diff <number> --full
+
+# Issues the PR closes or references
+gh-axi issue view <number> --full --comments
+
+# PRs and commits mentioning a symbol, error string, or ticket key
+gh-axi search prs '<term>' --repo {owner}/{repo} --state all
+gh-axi search commits '<term>' --repo {owner}/{repo}
+
+# Other PRs by the same author around the change
+gh-axi pr list --state all --author <login> --limit 50
 ```
 
 Look for out-of-band docs:
